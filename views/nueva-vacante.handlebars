@@ -34,5 +34,13 @@
             <input type="hidden" name="descripcion" id="X">
             <trix-editor input="X"></trix-editor>
         </div>
+        <h3>Conocimientos</h3>
+        <ul class="lista-conocimientos">
+            {{#seleccionarSkills a}}
+            {{/seleccionarSkills}}
+        </ul>
+        <div class="campo central-horizontal">
+            <input type="submit" value="Publicar" class="btn btn-azul">
+        </div>
     </form>
 </main>

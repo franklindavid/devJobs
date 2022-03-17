@@ -14,7 +14,8 @@ const app= express();
 
 app.engine('handlebars',
     engine({
-        defaultLayout: 'layout'
+        defaultLayout: 'layout',
+        helpers: require('./helpers/handlebars')
     })
 );
 
