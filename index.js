@@ -2,6 +2,7 @@ const express= require('express');
 const {engine} = require('express-handlebars');
 const router = require('./routes');
 const path = require ('path');
+require('dotenv').config({path: 'variables.env'});
 
 const app= express();
 
@@ -17,4 +18,4 @@ app.use(express.static(path.join(__dirname,'public')));
 
 app.use('/',router());
 
-app.listen(5000);
+app.listen(process.env.PUERTO);
