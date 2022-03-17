@@ -16,5 +16,5 @@ const agregarSkills = e =>{
         }     
     }
     const skillArray=[...skills]
-    document.querySelector('#skills').value = skillsArray;
+    document.querySelector('#skills').value = skillArray;
 }

@@ -6,11 +6,14 @@ const router = require('./routes');
 const cookieParser= require('cookie-parser');
 const session = require('express-session');
 const MongoStore= require('connect-mongo');
-// const MongoStore= require('connect-mongo')(session);
+const bodyParser = require('body-parser');
 const path = require ('path');
 require('dotenv').config({path: 'variables.env'});
 
 const app= express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 
 app.engine('handlebars',
     engine({
