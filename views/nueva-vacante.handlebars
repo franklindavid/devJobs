@@ -1,0 +1,33 @@
+<main class="contenedor">
+    <form action="/vacantes/nueva" methord='POST' class="default-form">
+        <h3>Informacion General</h3>
+
+        <div class="campo">
+            <label for="titulo">Titulo</label>
+            <input type="text" name="titulo" id="" placeholder="Ej: React Developer" required>
+        </div>
+        <div class="campo">
+            <label for="empresa">Empresa</label>
+            <input type="text" name="empresa" id="" placeholder="Ej: Empresa Contrata" required>
+        </div>
+        <div class="campo">
+            <label for="ubicacion">Ubicacion</label>
+            <input type="text" name="ubicacion" id="" placeholder="Ej: Mexico" required>
+        </div>
+        <div class="campo">
+            <label for="salario">Salario ($USD)</label>
+            <input type="text" name="salario" id="" placeholder="Ej: 500 USD" required>
+        </div>
+        <div class="campo">
+            <label for="contrato">Contrato</label>
+            <select name="contrato" id="">
+                <option value="" disabled selected> Selecciona</option>
+                <option value="Frelance">Frelance</option>
+                <option value="Tiempo Completo">Tiempo Completo</option>
+                <option value="Medio Tiempo">Medio Tiempo</option>
+                <option value="Por Proyecto">Por Proyecto</option>
+            </select>
+        </div>
+        <h3>Descripcion del Puesto</h3>
+    </form>
+</main>
