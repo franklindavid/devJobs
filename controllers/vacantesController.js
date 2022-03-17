@@ -36,7 +36,7 @@ exports.formEditarVacante = async (req,res)=>{
     if (!vacante) return next();
     res.render('editar-vacante',{
         vacante, 
-        nombrePagina: vacante.titulo,
+        nombrePagina: `Editar - ${vacante.titulo}`,
         barra:true
     })
 } 
