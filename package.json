@@ -4,13 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" :"concurrently \"npm run dev \" \"npm run watch \"",
+    "start": "concurrently \"npm run dev \" \"npm run watch \"",
     "dev": "nodemon ./index",
     "watch": "webpack --mode development"
   },
   "author": "franklin j david rodriguez",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "concurrently": "^7.0.0",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
