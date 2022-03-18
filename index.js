@@ -2,18 +2,22 @@ const mongoose = require ('mongoose');
 require('./config/db');
 const express= require('express');
 const {engine} = require('express-handlebars');
+const path = require ('path');
 const router = require('./routes');
 const cookieParser= require('cookie-parser');
 const session = require('express-session');
 const MongoStore= require('connect-mongo');
 const bodyParser = require('body-parser');
-const path = require ('path');
+const flash = require ('connect-flash');
+const res = require('express/lib/response');
+
 require('dotenv').config({path: 'variables.env'});
 
 const app= express();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
+
 
 app.engine('handlebars',
     engine({
@@ -38,6 +42,13 @@ app.use(session({
         mongooseConnection : mongoose.connection
     })
 }));
+
+app.use(flash());
+
+app.use((req,res,next)=>{
+    res.locals.mensajes = req.flash();
+    next();
+});
 
 app.use('/',router());
 
