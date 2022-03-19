@@ -13,3 +13,18 @@ exports.mostrarPanel = (req,res) => {
         tagline: 'Crea y Administra tus vacantes desde aqui'
     });
 }
+
+exports.verificarUsuario = (req,res,next) => {
+    if(req.isAuthenticated()){
+        return next();
+    }else{
+        res.redirect('iniciar-sesion');
+    }
+}
+
+exports.usuarioAutenticado = (req,res,next)=>{
+    if(req.isAuthenticated()){
+        return next();
+    }
+    return res.redirect('/iniciar-sesion');
+}
