@@ -1,4 +1,6 @@
 const passport = require('passport');
+const mongoose = require('mongoose');
+const Vacante = mongoose.model('Vacante');
 
 exports.autenticarUsuario = passport.authenticate('local',{
     successRedirect :'/administracion',
@@ -7,10 +9,13 @@ exports.autenticarUsuario = passport.authenticate('local',{
     badRequestMessage:'Ambos campos son obligatorios'
 })
 
-exports.mostrarPanel = (req,res) => {
+exports.mostrarPanel = async (req,res) => {
+    const vacantes= await Vacante.find({ autor: req.user._id}).lean();
+
     res.render('administracion',{
         nombrePagina: 'Panel de administracion',
-        tagline: 'Crea y Administra tus vacantes desde aqui'
+        tagline: 'Crea y Administra tus vacantes desde aqui',
+        vacantes
     });
 }
 
