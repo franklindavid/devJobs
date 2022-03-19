@@ -25,7 +25,7 @@ exports.verificarUsuario = (req,res,next) => {
     if(req.isAuthenticated()){
         return next();
     }else{
-        res.redirect('iniciar-sesion');
+        res.redirect('/iniciar-sesion');
     }
 }
 
@@ -33,5 +33,11 @@ exports.usuarioAutenticado = (req,res,next)=>{
     if(req.isAuthenticated()){
         return next();
     }
+    return res.redirect('/iniciar-sesion');
+}
+
+exports.cerrarSesion = (req,res)=>{
+    req.logout();
+    req.flash ('correcto', 'Cerraste Sesion Correctamente');
     return res.redirect('/iniciar-sesion');
 }
