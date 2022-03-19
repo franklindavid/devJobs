@@ -9,7 +9,8 @@ const session = require('express-session');
 const MongoStore= require('connect-mongo');
 const bodyParser = require('body-parser');
 const flash = require ('connect-flash');
-const res = require('express/lib/response');
+const passport= require('./config/passport');
+// const res = require('express/lib/response');
 
 require('dotenv').config({path: 'variables.env'});
 
@@ -42,6 +43,9 @@ app.use(session({
         mongooseConnection : mongoose.connection
     })
 }));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use(flash());
 

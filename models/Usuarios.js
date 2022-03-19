@@ -43,4 +43,11 @@ usuariosSchema.post('save', function(error ,doc,next){
         next(error);
     }
 });
+
+usuariosSchema.methods={
+    compararPassword: function(password){
+        return bcrypt.compareSync(password,this.password);
+    }
+};
+
 module.exports = mongoose.model('Usuarios', usuariosSchema);

@@ -6,7 +6,7 @@ exports.formCrearCuenta = (req,res) =>{
         nombrePagina: 'Crea tu cuenta en devJobs',
         tagline: 'Comienza a publicar tus vacantes gratis, solo debes crear una cuenta'
     })
-}
+} 
 
 exports.crearUsuario = async (req,res,next) =>{
 
@@ -32,7 +32,7 @@ exports.validarRegistro = async (req, res, next) => {
     ];
     await Promise.all(rules.map( validation => validation.run(req)));
     const errores = validationResult(req);
- 
+    
     if(errores.isEmpty()){
         return next();
     }
@@ -45,3 +45,9 @@ exports.validarRegistro = async (req, res, next) => {
     
     return;
 };
+
+exports.formIniciarSesion =  (req,res) =>{
+    res.render('iniciar-sesion',{
+        nombrePagina : 'Iniciar Sesion devJobs'
+    })
+}
