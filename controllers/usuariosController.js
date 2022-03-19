@@ -22,7 +22,7 @@ exports.crearUsuario = async (req,res,next) =>{
 }
 
 exports.validarRegistro = async (req, res, next) => {
-    req.sani
+    // req.sani
     const rules = [
         check('nombre').not().isEmpty().withMessage('El nombre es Obligatorio').escape(),
         check('email').isEmail().withMessage('El email debe ser valido').escape(),
