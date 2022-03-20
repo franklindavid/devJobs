@@ -25,6 +25,7 @@ const usuariosSchema = new mongoose.Schema({
     expira:{
         type: Date
     },
+    imagen: String
 });
 
 usuariosSchema.pre('save', async function(next){
