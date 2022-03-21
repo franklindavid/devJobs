@@ -150,7 +150,7 @@ const configuracionMulter = {
         if (file.mimetype === 'image/jpeg' || file.mimetype==='image/png'){
             cb(null,true);
         }else{
-            cb(new error('Formato No Valido'),false);
+            cb(new Error('Formato No Valido'),false);
         }
     },
     limits :{fileSize: 100000},

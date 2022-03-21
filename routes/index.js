@@ -68,5 +68,10 @@ module.exports= () => {
         usuariosController.editarPerfil
     );
 
+    router.post('/vacantes/:url',
+        vacantesController.subirCV,
+        vacantesController.contactar
+    );
+
     return router;
 }
