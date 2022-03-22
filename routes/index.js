@@ -67,11 +67,15 @@ module.exports= () => {
         usuariosController.subirImagen,    
         usuariosController.editarPerfil
     );
-
+    
     router.post('/vacantes/:url',
-        vacantesController.subirCV,
-        vacantesController.contactar
+    vacantesController.subirCV,
+    vacantesController.contactar
     );
-
+    
+    router.get('/candidatos/:id',
+        authController.verificarUsuario,   
+        vacantesController.mostrarCandidatos
+    );
     return router;
 }
