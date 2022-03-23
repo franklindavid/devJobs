@@ -65,8 +65,8 @@ exports.enviarToken = async (req,res)=>{
     usuario.expira= Date.now() + 3600000;
 
     await usuario.save();
-    const resetUrl= `https://${req.headers.host}/reestablecer-password/${usuario.token}`;
-
+    const resetUrl= `http://${req.headers.host}/reestablecer-password/${usuario.token}`;
+    
     try {
         await enviarEmail.enviar({
             usuario,
@@ -82,4 +82,44 @@ exports.enviarToken = async (req,res)=>{
     
     req.flash('correcto','Revisa tu email para las indicaciones');
     res.redirect('/iniciar-sesion');
+}
+
+exports.reestablecerPassword = async (req,res)=>{
+    const usuario = await Usuarios.findOne({
+        token: req.params.token,
+        expira:{
+            $gt: Date.now()
+        }
+    });
+
+    if(!usuario){
+        req.flash('error','El formulario ya no es valido intenta de nuevo');
+         return res.redirect('/reestablecer-password');
+    }
+
+    res.render('nuevo-password',{
+        nombrePagina: 'Nuevo password'
+    })
+}
+
+exports.guardarPassword = async (req,res)=>{
+    const usuario = await Usuarios.findOne({
+        token: req.params.token,
+        expira:{
+            $gt: Date.now()
+        }
+    });
+
+    if(!usuario){
+        req.flash('error','El formulario ya no es valido intenta de nuevo');
+         return res.redirect('/reestablecer-password');
+    }
+    usuario.password = req.body.password;
+    usuario.token = undefined;
+    usuario.expira= undefined;
+
+    await usuario.save();
+
+    req.flash('correcto', 'Password Modificado Correctamente');
+    res.redirect('/iniciar-sesion')
 }
