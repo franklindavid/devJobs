@@ -9,6 +9,7 @@ const session = require('express-session');
 const MongoStore= require('connect-mongo');
 const bodyParser = require('body-parser');
 const flash = require ('connect-flash');
+const createError = require ('http-errors');
 const passport= require('./config/passport');
 // const res = require('express/lib/response');
 
@@ -55,5 +56,17 @@ app.use((req,res,next)=>{
 });
 
 app.use('/',router());
+
+app.use((req,res,next)=>{
+    next(createError(404,'No Encontrado'));
+});
+
+app.use((error,req,res,next)=>{
+    res.locals.mensaje= error.message;
+    const status = error.status || 500;
+    res.locals.status = status;
+    res.status(status);
+    res.render('error');
+})
 
 app.listen(process.env.PUERTO);
