@@ -1,5 +1,5 @@
 node_modules
+public/uploads/cv/*
+public/uploads/perfiles/*
 variables.env
-node_modules/.package-lock.json
-package-lock.json
 config/email.js

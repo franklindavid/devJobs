@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run dev \" \"npm run watch \"",
-    "dev": "nodemon ./index",
+    "desarrollo": "concurrently \"npm run dev \" \"npm run watch \"",
+    "start": "node ./index.js",
     "watch": "webpack --mode development"
   },
   "author": "franklin j david rodriguez",
